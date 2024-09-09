@@ -16,7 +16,7 @@ const ButtonComponent = ({
       disabled={isDisabled || isLoading}
       onClick={onPress}
       className={classNames(
-        "btn bg-movies-primary-success py-2",
+        "btn app-primary-color-dropdown-button py-2",
         btnContainerOverrideStyle
       )}
       {...(isModalBtn && {

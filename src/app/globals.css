@@ -1,9 +1,9 @@
 :root {
-  --movies-primary-color: #2bd17e;
-  --movies-primary-background-color: #093545;
-  --movies-primary-input-color: #224957;
-  --movies-primary-card-color: #092c39;
-  --movies-primary-error-color: #eb5757;
+  --app-primary-color: #2bd17e;
+  --app-background-color: #093545;
+  --app-input-color: #224957;
+  --movie-card-color: #092c39;
+  --app-error-color: #eb5757;
 }
 
 * {
@@ -12,25 +12,25 @@
   margin: 0;
 }
 
-.bg-movies-primary-success {
-  background-color: var(--movies-primary-color) !important;
+.app-primary-color-dropdown-button {
+  background-color: var(--app-primary-color) !important;
   color: #fff !important;
 }
 
-.bg-movies-primary {
-  background-color: var(--movies-primary-background-color) !important;
+.app-bg-color {
+  background-color: var(--app-background-color) !important;
   color: #fff;
 }
-.bg-movie-button-border {
+.button-border-color {
   border: 1px solid #fff !important;
 }
-.bg-movies-input {
-  background-color: var(--movies-primary-input-color) !important;
+.input-field-color {
+  background-color: var(--app-input-color) !important;
   color: #fff !important;
-  accent-color: var(--movies-primary-input-color) !important;
+  accent-color: var(--app-input-color) !important;
 }
 .error-message {
-  color: var(--movies-primary-error-color);
+  color: var(--app-error-color);
   font-size: 12px;
   font-weight: bold;
   display: flex;
@@ -48,7 +48,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--movies-primary-card-color);
+  background-color: var(--movie-card-color);
   filter: blur(50px); /* Adjust blur radius as needed */
   z-index: -1; /* Ensure it's behind the content */
 }
@@ -110,18 +110,18 @@
 
 .pagination-wrapper .page-item .page-link {
   background-color: transparent;
-  border-color: var(--movies-primary-background-color) !important;
+  border-color: var(--app-background-color) !important;
   color: #ffffff;
   border: 5px solid;
 }
 
 .pagination-wrapper .page-item.active .page-link {
-  background-color: var(--movies-primary-color) !important;
+  background-color: var(--app-primary-color) !important;
   border-radius: 8px;
 }
 
 .pagination-wrapper .page-item:not(.active) .page-link {
-  background-color: var(--movies-primary-card-color) !important;
+  background-color: var(--movie-card-color) !important;
   border-radius: 8px;
 }
 

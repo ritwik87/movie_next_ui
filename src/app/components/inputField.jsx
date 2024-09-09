@@ -4,7 +4,7 @@ const InputField = forwardRef((props, ref) => {
   return (
     <input
       {...props}
-      className={`bg-movies-input p-2 border-0 my-2 rounded ${props.className}`}
+      className={`input-field-color p-2 border-0 my-2 rounded ${props.className}`}
     />
   );
 });

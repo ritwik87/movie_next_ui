@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="w-100 min-vh-100 bg-movies-primary d-flex justify-content-center align-items-center flex-column position-relative overflow-x-hidden">
+          <div className="w-100 min-vh-100 app-bg-color d-flex justify-content-center align-items-center flex-column position-relative overflow-x-hidden">
             <div className="d-flex justify-content-end position-absolute top-0 end-0 m-4">
               <Dropdown>
                 <Dropdown.Toggle
-                  className="bg-movies-primary-success border-0"
+                  className="app-primary-color-dropdown-button border-0"
                   id="dropdown-basic"
                 >
                   <span

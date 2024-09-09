@@ -8,7 +8,6 @@ export default function ProtectedRoute(Component: any) {
     if (typeof window !== "undefined") {
       auth = window.localStorage.getItem("access-token") || "";
     }
-    //const auth = localStorage.getItem('access-token');
 
     useEffect(() => {
       if (!auth) {

@@ -3,13 +3,14 @@ import ButtonComponent from "../components/button";
 import { useRouter } from "next/navigation";
 
 const EmptyMovieList = () => {
-  const router = useRouter();
+  const { push } = useRouter();
+
   return (
-    <div className="d-flex justify-content-center align-items-center text-center flex-column ">
+    <div className="d-flex flex-column justify-content-center align-items-center text-center">
       <h4>Your movie list is empty</h4>
       <ButtonComponent
         title="Add a new movie"
-        onPress={() => router.push("/movieList/createMovie")}
+        onPress={() => push("/movieList/modifyMovie/0")}
       />
     </div>
   );
