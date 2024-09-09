@@ -9,43 +9,50 @@ const ImageInput = ({ onImageUpload, imageUrl }) => {
   const [image, setImage] = useState(imageUrl || null);
   const fileInputRef = useRef(null);
 
+  // Handle drag events
   const handleDragEvents = useCallback((e, dragging) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(dragging);
   }, []);
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
+  // Handle file drop
+  const handleDrop = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(false);
 
-    const files = e.dataTransfer.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-      if (file.type.startsWith("image/")) {
+      const file = e.dataTransfer.files?.[0];
+      if (file?.type.startsWith("image/")) {
         setImage(file);
         onImageUpload(file);
       }
-    }
-  };
+    },
+    [onImageUpload]
+  );
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setImage(file);
-      onImageUpload(file);
-    }
-  };
+  // Handle file input change
+  const handleFileChange = useCallback(
+    (e) => {
+      const file = e.target.files?.[0];
+      if (file?.type.startsWith("image/")) {
+        setImage(file);
+        onImageUpload(file);
+      }
+    },
+    [onImageUpload]
+  );
 
-  const handleClick = () => {
+  // Handle click to open file input
+  const handleClick = useCallback(() => {
     fileInputRef.current?.click();
-  };
+  }, []);
 
+  // Memoize the image source
   const imageSrc = useMemo(() => {
-    return image && typeof image === "object"
-      ? URL.createObjectURL(image)
-      : image;
+    if (!image) return null;
+    return typeof image === "object" ? URL.createObjectURL(image) : image;
   }, [image]);
 
   return (
@@ -66,7 +73,7 @@ const ImageInput = ({ onImageUpload, imageUrl }) => {
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
-        {image ? (
+        {imageSrc ? (
           <img
             src={imageSrc}
             alt="Uploaded"
@@ -76,11 +83,11 @@ const ImageInput = ({ onImageUpload, imageUrl }) => {
           />
         ) : (
           <div className="image-placeholder">
-            <Download color="#fff" className="fs-6 pe-auto mb-2" />
+            <Download color="#fff" className="fs-6 mb-2" />
             <span className="image-text">
               {isDragging
                 ? "Drop image here"
-                : "Drag & drop an image or click to upload"}
+                : "Drag & drop or click to upload"}
             </span>
           </div>
         )}

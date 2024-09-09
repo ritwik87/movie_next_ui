@@ -10,19 +10,23 @@ const ButtonComponent = ({
   isModalBtn = false,
   btnContainerOverrideStyle = "border-0",
 }) => {
+  const buttonClasses = classNames(
+    "btn app-primary-color-dropdown-button py-2",
+    btnContainerOverrideStyle
+  );
+
+  const modalAttributes = isModalBtn
+    ? { "data-bs-toggle": "modal", "data-bs-target": "#exampleModal" }
+    : {};
+
   return (
     <button
       type={type}
       disabled={isDisabled || isLoading}
       onClick={onPress}
-      className={classNames(
-        "btn app-primary-color-dropdown-button py-2",
-        btnContainerOverrideStyle
-      )}
-      {...(isModalBtn && {
-        "data-bs-toggle": "modal",
-        "data-bs-target": "#exampleModal",
-      })}
+      className={buttonClasses}
+      {...modalAttributes}
+      aria-label={title} // Improved accessibility with aria-label
     >
       {isLoading ? (
         <div className="d-flex justify-content-center align-items-center gap-2">
@@ -47,6 +51,15 @@ ButtonComponent.propTypes = {
   onPress: PropTypes.func.isRequired,
   isModalBtn: PropTypes.bool,
   btnContainerOverrideStyle: PropTypes.string,
+};
+
+// Default props for non-required props
+ButtonComponent.defaultProps = {
+  type: "button",
+  isLoading: false,
+  isDisabled: false,
+  isModalBtn: false,
+  btnContainerOverrideStyle: "border-0",
 };
 
 export default ButtonComponent;
