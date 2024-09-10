@@ -4,7 +4,7 @@ import baseQueryMovies from "./baseQuery";
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
   baseQuery: baseQueryMovies,
-  tagTypes: ["Movies"],
+  tagTypes: ["Movie"],
   endpoints: (builder) => ({
     getMovies: builder.query({
       query: () => ({

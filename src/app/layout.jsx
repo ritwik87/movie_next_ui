@@ -5,7 +5,7 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Providers from "../redux/Provider";
 import { useTranslation } from "react-i18next";
-import { Dropdown, Nav, NavDropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
 const inter = Inter({ subsets: ["latin"] });
 
